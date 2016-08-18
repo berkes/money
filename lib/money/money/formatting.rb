@@ -203,7 +203,6 @@ class Money
       rules = normalize_formatting_rules(rules)
 
       rules = default_formatting_rules.merge(rules)
-      rules = localize_formatting_rules(rules)
       rules = translate_formatting_rules(rules) if rules[:translate]
 
       thousands_separator = self.thousands_separator
@@ -375,15 +374,6 @@ class Money
       rules[:symbol] = I18n.t currency.iso_code, :scope => "number.currency.symbol", :raise => true
     rescue I18n::MissingTranslationData
       # Do nothing
-    end
-    rules
-  end
-
-  def localize_formatting_rules(rules)
-    if currency.iso_code == "JPY" && I18n.locale == :ja
-      rules[:symbol] = "円" unless rules[:symbol] == false
-      rules[:symbol_position] = :after
-      rules[:symbol_after_without_space] = true
     end
     rules
   end
