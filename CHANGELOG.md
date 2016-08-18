@@ -1,5 +1,8 @@
 # Changelog
 
+## 6.10.0
+- Remove `localize_formatting_rules`
+
 ## 6.9.0
 - Extracted heuristics into money-heuristics gem
 
